@@ -1,0 +1,24 @@
+{
+  "name": "choo-play",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "bankai start",
+    "build": "bankai build",
+    "test": "standard"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bankai": "^6.1.1",
+    "choo": "^5.0.4",
+    "date-fns": "^1.28.2",
+    "sheetify": "^6.0.1",
+    "tachyons": "^4.6.2"
+  },
+  "devDependencies": {
+    "bankai": "^6.1.1",
+    "standard": "^9.0.2"
+  }
+}
