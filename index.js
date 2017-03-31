@@ -17,22 +17,20 @@ function mainView (state, emit) {
     <body>
     <section class="mw6-ns center bg-yellow pa3 ph5-ns">
       <h1 class="mt0 tc f2">Days Count</h1>
-      
-      <div class="mt4 tc">
-        <input class="pa2 ba bg-transparent input-reset measure" type="date" name="date" id="date">
-      </div>
-      
-      <div class="flex items-center justify-center pa4">
-      <a onclick = ${onCalculate} class="f5 no-underline black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box mr4">
-        <span class="pl1">Calculate</span>
-      </a>
-      </div>
+          <div class="mt4 tc">
+            <input class="b pa2 ba bg-washed-yellow input-reset measure" type="date" name="date" id="date">
+          </div>
+          
+          <div class="flex items-center justify-center pa4">
+          <button  onclick=${onCalculate} class="b f5 no-underline red bg-black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box mr4">
+            Calculate
+          </button>
+          </div>
     </section>
     </body>
   `
 
   function onCalculate () {
-    // calculate days
     var dateElement = document.querySelector('input[name="date"]')
     var targetDate = dateElement.value
     var diff = differenceInDays(targetDate, Date.now())
