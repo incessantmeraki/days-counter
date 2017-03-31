@@ -17,21 +17,24 @@ function mainView (state, emit) {
     <body>
     <section class="mw6-ns center bg-yellow pa3 ph5-ns">
       <h1 class="mt0 tc f2">Days Count</h1>
-          <div class="mt4 tc">
-            <input class="b pa2 ba bg-washed-yellow input-reset measure" type="date" name="date" id="date">
-          </div>
-          
-          <div class="flex items-center justify-center pa4">
-          <button  onclick=${onCalculate} class="b f5 no-underline red bg-black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box mr4">
-            Calculate
-          </button>
-          </div>
+          <form onsubmit=${onCalculate}>
+            <div class="mt4 tc">
+              <input class="b pa2 ba bg-washed-yellow input-reset measure" type="date" name="date" id="date">
+            </div>
+            
+            <div class="flex items-center justify-center pa4">
+            <button class="b f5 no-underline red bg-black bg-animate hover-bg-black hover-white inline-flex items-center pa3 ba border-box mr4">
+              Calculate
+            </button>
+            </div>
+          </form>
     </section>
     </body>
   `
 
-  function onCalculate () {
-    var dateElement = document.querySelector('input[name="date"]')
+  function onCalculate (ev) {
+    ev.preventDefault()
+    var dateElement = ev.target.elements.date
     var targetDate = dateElement.value
     var diff = differenceInDays(targetDate, Date.now())
     diff = diff < 0 ? 0 : diff
@@ -45,11 +48,15 @@ function mainView (state, emit) {
 
 function resultView (state, emit) {
   var days = state.days || 0
+  if (days == 1) 
+    days = days + ' day'
+  else
+    days = days + ' days'
   return html`
     <body>
       <section class="mw6-ns center bg-yellow pa3 ph5-ns">
         <div class="mt4 tc">
-          <p class ="f1"> <b> ${days} </b> days remaining </p>
+          <p class ="f1"> <b> ${days} remaining </p>
         </div>
     </section>
   </body>
